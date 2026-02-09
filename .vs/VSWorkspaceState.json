@@ -1,12 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\api",
     "\\static",
     "\\static\\css",
     "\\static\\img",
     "\\static\\js",
     "\\templates"
   ],
-  "SelectedNode": "\\app.py",
+  "SelectedNode": "\\requirements.txt",
   "PreviewInSolutionExplorer": false
 }
