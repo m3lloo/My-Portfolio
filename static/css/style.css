@@ -46,6 +46,13 @@ body {
     color: var(--text-main);
     transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
+    width: 100%;
+}
+
+/* GLOBAL RESPONSIVE FIX: Images never overflow */
+img, video, svg {
+    max-width: 100%;
+    height: auto;
 }
 
 /* --- NAVIGATION --- */
@@ -53,7 +60,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 80px;
+    height: 70px;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -77,7 +84,7 @@ body {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
     text-decoration: none;
     color: var(--text-main);
@@ -91,14 +98,14 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
 }
 
     .nav-links a {
         text-decoration: none;
         color: var(--text-main);
         font-weight: 500;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         transition: 0.3s;
     }
 
@@ -109,8 +116,8 @@ body {
 .theme-btn-nav {
     background: var(--btn-sec-bg);
     border: 1px solid var(--border);
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     cursor: pointer;
     color: var(--text-main);
@@ -141,15 +148,17 @@ body {
 /* --- SECTIONS GLOBAL --- */
 section {
     width: 100%;
-    min-height: 100vh;
-    padding-top: 80px;
-    padding-bottom: 60px;
+    padding: 60px 0;
     position: relative;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+    section[id] {
+        scroll-margin-top: 70px;
+    }
 
 .container {
     width: 90%;
@@ -158,64 +167,67 @@ section {
 }
 
 .section-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow: var(--shadow);
-    padding: 30px;
+    padding: 25px;
 }
 
 /* --- HERO --- */
 #home {
-    padding-top: 80px;
+    min-height: 90vh;
+    padding-top: 100px;
+    padding-bottom: 40px;
 }
 
 .hero-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 50px;
     width: 100%;
 }
 
 .hero-left .photo-frame {
-    padding: 15px;
+    padding: 12px;
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 30px;
+    border-radius: 25px;
     box-shadow: var(--shadow);
 }
 
 .hero-pic {
-    width: 350px;
-    height: 420px;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 15px;
     display: block;
 }
 
 .hero-right {
-    max-width: 700px; /* Increased to fit name better */
+    max-width: 650px;
 }
 
 .status-badge {
     background: var(--badge-bg);
     color: var(--primary);
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 30px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .dot {
@@ -225,30 +237,27 @@ section {
     border-radius: 50%;
 }
 
-/* --- HERO NAME FIXES --- */
 .hero-name {
-    /* Responsive font: minimum 2rem, preferred 5vw, max 3.5rem */
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 400; /* Regular weight for "Hi, I'm" */
-    line-height: 1.2;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
     margin: 0 0 15px 0;
 }
 
-/* Wrapper to hold name and cursor together */
 .name-wrapper {
-    white-space: nowrap; /* Prevents line break between name and cursor */
+    white-space: nowrap;
     display: inline-block;
 }
 
 .name-highlight {
     color: var(--primary);
-    font-weight: 800; /* Bold for Name */
+    font-weight: 800;
 }
 
 .cursor {
     display: inline-block;
     width: 4px;
-    height: 1em; /* Matches the text height */
+    height: 1em;
     background-color: var(--primary);
     animation: blink 1s infinite;
     vertical-align: text-bottom;
@@ -266,29 +275,32 @@ section {
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .about-content p {
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 35px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
 }
 
 .hero-btns {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
-    padding: 15px 35px;
-    border-radius: 12px;
+    padding: 12px 30px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -310,21 +322,20 @@ section {
 /* --- EDUCATION --- */
 #education {
     justify-content: flex-start;
-    padding-top: 150px;
 }
 
 .timeline {
     position: relative;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
     .timeline::after {
         content: '';
         position: absolute;
         width: 4px;
-        background: linear-gradient(to bottom, var(--border) 85%, transparent 100%);
+        background: linear-gradient(to bottom, var(--border) 90%, transparent 100%);
         top: 0;
         bottom: 0;
         left: 50%;
@@ -333,11 +344,11 @@ section {
     }
 
 .timeline-item {
-    padding: 10px 40px;
+    padding: 5px 35px;
     position: relative;
     width: 50%;
     box-sizing: border-box;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
     .timeline-item:last-child {
@@ -355,13 +366,13 @@ section {
     }
 
 .timeline-dot {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: var(--primary);
     border: 4px solid var(--bg);
     position: absolute;
     border-radius: 50%;
-    top: 25px;
+    top: 20px;
     z-index: 10;
     box-shadow: 0 0 0 2px var(--border);
     transition: transform 0.3s ease;
@@ -374,19 +385,20 @@ section {
 }
 
 .right .timeline-dot {
-    left: -10px;
+    left: -9px;
 }
 
 .left .timeline-dot {
-    right: -10px;
+    right: -9px;
 }
 
 .timeline-content {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
     position: relative;
     transition: transform 0.3s;
+    padding: 20px;
 }
 
 .timeline-item:hover .timeline-content {
@@ -397,12 +409,12 @@ section {
     display: inline-block;
     background: var(--badge-bg);
     color: var(--primary);
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
     font-weight: 700;
     width: fit-content;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     align-self: flex-start;
 }
 
@@ -414,38 +426,49 @@ section {
     align-self: flex-end;
 }
 
+.edu-institution {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.edu-details {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
 /* --- SKILLS --- */
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 30px;
 }
 
 .p-box {
-    padding: 10px;
+    padding: 5px;
 }
 
 .skill-cat-title {
     border-bottom: 2px solid var(--border);
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-    font-size: 1.4rem;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
 }
 
 .skill-item {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .skill-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .progress-bg {
     width: 100%;
-    height: 10px;
+    height: 8px;
     background: var(--border);
     border-radius: 10px;
     overflow: hidden;
@@ -462,23 +485,23 @@ section {
 .other-skills-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
 .other-tag {
     background: var(--btn-sec-bg);
     border: 1px solid var(--border);
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
     font-weight: 500;
 }
 
 /* --- PROJECTS --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
 }
 
 .project-item {
@@ -494,59 +517,76 @@ section {
     }
 
 .project-icon {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.project-item h4 {
+    margin-bottom: 10px;
+}
+
+.project-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 .project-tags span {
     background: var(--badge-bg);
     color: var(--primary);
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    margin-right: 8px;
+    margin-right: 6px;
+    display: inline-block;
+    margin-bottom: 4px;
 }
 
 /* --- CONTACT --- */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 40px;
+    gap: 30px;
 }
 
 .contact-info .c-link {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    font-size: 1rem;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    word-break: break-all;
 }
 
     .contact-info .c-link i {
         color: var(--primary);
-        width: 25px;
+        width: 20px;
+        flex-shrink: 0;
     }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
     .form-group label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         font-weight: 500;
+        font-size: 0.9rem;
     }
 
     .form-group input, .form-group textarea {
         width: 100%;
-        padding: 14px;
-        border-radius: 10px;
+        padding: 12px;
+        border-radius: 8px;
         border: 1px solid var(--border);
         background: var(--bg);
         color: var(--text-main);
         font-family: inherit;
+        font-size: 0.9rem;
     }
 
         .form-group input:focus, .form-group textarea:focus {
@@ -578,8 +618,35 @@ section {
     transform: translate(0);
 }
 
-/* --- RESPONSIVE --- */
+/* =========================================
+   FULL RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* Tablet & Intermediate Screens */
+@media (max-width: 1200px) and (min-width: 901px) {
+    .container {
+        width: 95%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero-container {
+        gap: 30px;
+    }
+
+    .hero-pic {
+        width: 280px;
+    }
+}
+
+/* Mobile Devices (Hamburger Menu) */
 @media (max-width: 900px) {
+    .navbar {
+        height: 70px;
+    }
+
     .nav-container {
         position: relative;
     }
@@ -589,17 +656,19 @@ section {
     }
 
     .nav-links {
-        position: absolute;
-        top: 80px;
-        left: -5%;
-        width: 110%;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: auto;
         background: var(--card);
         flex-direction: column;
-        padding: 40px 0;
+        padding: 30px 0;
         border-bottom: 1px solid var(--border);
         display: none;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         text-align: center;
+        z-index: 999;
     }
 
         .nav-links.active {
@@ -612,11 +681,13 @@ section {
 
     section {
         justify-content: flex-start;
-        padding-top: 120px;
+        padding: 50px 0;
     }
 
     #home {
         justify-content: center;
+        padding-top: 90px;
+        min-height: auto;
     }
 
     .hero-container {
@@ -625,30 +696,29 @@ section {
     }
 
     .hero-pic {
-        width: 300px;
-        height: 360px;
+        /* Reduced from 300px to 200px to fix Screenshot 1 */
+        width: 200px;
         margin: 0 auto;
+    }
+
+    .photo-frame {
+        padding: 8px !important; /* Thinner border frame */
     }
 
     .hero-btns {
         justify-content: center;
     }
 
-    /* The clamp function in base styles should handle this, but this is a safeguard */
-    .hero-name {
-        font-size: 2.5rem;
-    }
-
+    /* Timeline Mobile Fixes */
     .timeline::after {
         left: 31px;
-        background: linear-gradient(to bottom, var(--border) 90%, transparent 100%);
     }
 
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
+        padding-left: 60px;
         padding-right: 0;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
         .timeline-item.left, .timeline-item.right {
@@ -668,12 +738,67 @@ section {
         left: 18px !important;
     }
 
+    /* Grid Stacking */
     .grid-2, .contact-grid {
         grid-template-columns: 1fr;
     }
 
     .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 40px;
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* Small Mobile Devices (< 480px) */
+@media (max-width: 480px) {
+    /* Side Margins Fix: Use 85% width to create more space on sides */
+    .container {
+        width: 85%;
+    }
+
+    /* Font Size Reductions for Screenshot 2 */
+    .hero-name {
+        font-size: 1.8rem; /* Smaller name */
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem; /* Smaller title */
+    }
+
+    .about-content p {
+        font-size: 0.9rem; /* Smaller about text */
+        line-height: 1.5;
+    }
+
+    /* Ensure image is small on very small phones */
+    .hero-pic {
+        width: 180px;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        /* Reduced padding for less bulky buttons */
+        padding: 10px 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        padding-left: 55px;
+    }
+
+    .timeline-dot {
+        left: 10px !important;
+    }
+
+    .timeline::after {
+        left: 23px;
     }
 }
