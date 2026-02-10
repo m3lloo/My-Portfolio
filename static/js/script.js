@@ -14,7 +14,10 @@ function typeWriter() {
 }
 
 window.addEventListener('load', () => {
-    setTimeout(typeWriter, startDelay);
+    if (typingElement) {
+        typingElement.textContent = "";
+        setTimeout(typeWriter, startDelay);
+    }
 });
 
 // 2. THEME TOGGLE
@@ -29,7 +32,6 @@ if (localStorage.getItem('theme') === 'dark') {
 
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-
     if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
         icon.classList.remove('fa-moon');
@@ -41,7 +43,7 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// 3. GENERAL SCROLL REVEAL (Sections/Cards)
+// 3. GENERAL SCROLL REVEAL
 const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -55,23 +57,22 @@ document.querySelectorAll('.reveal-left, .reveal-right, .reveal-bottom').forEach
     revealObserver.observe(el);
 });
 
-// 4. SKILLS PROGRESS ANIMATION (Specific Logic)
+// 4. SKILLS PROGRESS ANIMATION
 const skillsObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const bar = entry.target;
-            // Get value from data-width and apply it to style.width
             bar.style.width = bar.getAttribute('data-width');
-            observer.unobserve(bar); // Only animate once
+            observer.unobserve(bar);
         }
     });
-}, { threshold: 0.2 }); // Triggers when 20% of the bar is visible
+}, { threshold: 0.2 });
 
 document.querySelectorAll('.progress').forEach(bar => {
     skillsObserver.observe(bar);
 });
 
-// 5. MOBILE MENU
+// 5. MOBILE MENU LOGIC
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
@@ -84,3 +85,27 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         navLinks.classList.remove('active');
     });
 });
+
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
+// 6. LOCAL TIME CLOCK (NEW)
+function updateLocalTime() {
+    const timeElement = document.getElementById('local-time');
+    if (timeElement) {
+        const now = new Date();
+        const options = {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        };
+        timeElement.textContent = now.toLocaleTimeString(undefined, options);
+    }
+}
+
+setInterval(updateLocalTime, 1000);
+updateLocalTime(); // Initial call

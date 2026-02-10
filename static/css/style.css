@@ -27,7 +27,7 @@ body.dark-mode {
     --card: #151515;
     --text-main: #ffffff;
     --text-muted: #aaaaaa;
-    --border: #222222;
+    --border: #333333;
     --btn-pri-bg: #ffffff;
     --btn-pri-text: #000000;
     --btn-sec-bg: #222222;
@@ -49,7 +49,6 @@ body {
     width: 100%;
 }
 
-/* GLOBAL RESPONSIVE FIX: Images never overflow */
 img, video, svg {
     max-width: 100%;
     height: auto;
@@ -217,6 +216,15 @@ section {
     max-width: 650px;
 }
 
+/* Updated Badge Container for multiple badges */
+.badge-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
 .status-badge {
     background: var(--badge-bg);
     color: var(--primary);
@@ -227,8 +235,25 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
 }
+
+/* New Local Time Badge */
+.time-badge {
+    background: var(--card);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .time-badge i {
+        color: var(--primary);
+    }
 
 .dot {
     width: 8px;
@@ -240,13 +265,16 @@ section {
 .hero-name {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.2;
     margin: 0 0 15px 0;
 }
 
+/* FIXED: Reserves space so the paragraph doesn't stretch/jump while typing */
 .name-wrapper {
     white-space: nowrap;
     display: inline-block;
+    min-height: 1.2em;
+    vertical-align: top;
 }
 
 .name-highlight {
@@ -260,7 +288,7 @@ section {
     height: 1em;
     background-color: var(--primary);
     animation: blink 1s infinite;
-    vertical-align: text-bottom;
+    vertical-align: middle;
     margin-left: 5px;
 }
 
@@ -301,6 +329,11 @@ section {
     transition: 0.3s;
     font-size: 0.95rem;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -317,6 +350,13 @@ section {
 
     .btn-primary:hover, .btn-secondary:hover {
         transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary:active, .btn-secondary:active {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: 0.1s;
     }
 
 /* --- EDUCATION --- */
@@ -618,49 +658,14 @@ section {
     transform: translate(0);
 }
 
-/* =========================================
-   FULL RESPONSIVE MEDIA QUERIES
-   ========================================= */
+/* --- RESPONSIVE MEDIA QUERIES --- */
 
-/* Tablet & Intermediate Screens */
-@media (max-width: 1200px) and (min-width: 901px) {
-    .container {
-        width: 95%;
-    }
-
-    .nav-links {
-        gap: 15px;
-    }
-
-    .hero-container {
-        gap: 30px;
-    }
-
-    .hero-pic {
-        width: 280px;
-    }
-}
-
-/* Mobile Devices (Hamburger Menu) */
 @media (max-width: 900px) {
-    .navbar {
-        height: 70px;
-    }
-
-    .nav-container {
-        position: relative;
-    }
-
-    .nav-right-wrapper {
-        gap: 15px;
-    }
-
     .nav-links {
         position: fixed;
         top: 70px;
         left: 0;
         width: 100%;
-        height: auto;
         background: var(--card);
         flex-direction: column;
         padding: 30px 0;
@@ -679,13 +684,7 @@ section {
         display: block;
     }
 
-    section {
-        justify-content: flex-start;
-        padding: 50px 0;
-    }
-
     #home {
-        justify-content: center;
         padding-top: 90px;
         min-height: auto;
     }
@@ -695,21 +694,19 @@ section {
         text-align: center;
     }
 
-    .hero-pic {
-        /* Reduced from 300px to 200px to fix Screenshot 1 */
-        width: 200px;
-        margin: 0 auto;
+    .badge-container {
+        justify-content: center;
     }
 
-    .photo-frame {
-        padding: 8px !important; /* Thinner border frame */
+    .hero-pic {
+        width: 200px;
+        margin: 0 auto;
     }
 
     .hero-btns {
         justify-content: center;
     }
 
-    /* Timeline Mobile Fixes */
     .timeline::after {
         left: 31px;
     }
@@ -726,11 +723,7 @@ section {
             text-align: left;
         }
 
-    .left .timeline-content {
-        align-items: flex-start;
-    }
-
-    .left .edu-tag {
+    .left .timeline-content, .left .edu-tag {
         align-self: flex-start;
     }
 
@@ -738,41 +731,20 @@ section {
         left: 18px !important;
     }
 
-    /* Grid Stacking */
     .grid-2, .contact-grid {
         grid-template-columns: 1fr;
     }
-
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
 }
 
-/* Small Mobile Devices (< 480px) */
 @media (max-width: 480px) {
-    /* Side Margins Fix: Use 85% width to create more space on sides */
-    .container {
-        width: 85%;
-    }
-
-    /* Font Size Reductions for Screenshot 2 */
     .hero-name {
-        font-size: 1.8rem; /* Smaller name */
+        font-size: 1.8rem;
     }
-
-    .hero-subtitle {
-        font-size: 0.95rem; /* Smaller title */
-    }
-
-    .about-content p {
-        font-size: 0.9rem; /* Smaller about text */
-        line-height: 1.5;
-    }
-
-    /* Ensure image is small on very small phones */
-    .hero-pic {
-        width: 180px;
+    /* Stack badges vertically on small screens if needed */
+    .badge-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 
     .hero-btns {
@@ -782,20 +754,6 @@ section {
 
     .btn-primary, .btn-secondary {
         width: 100%;
-        /* Reduced padding for less bulky buttons */
-        padding: 10px 20px;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .timeline-item {
-        padding-left: 55px;
-    }
-
-    .timeline-dot {
-        left: 10px !important;
     }
 
     .timeline::after {
