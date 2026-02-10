@@ -216,7 +216,6 @@ section {
     max-width: 650px;
 }
 
-/* Updated Badge Container for multiple badges */
 .badge-container {
     display: flex;
     gap: 12px;
@@ -237,7 +236,6 @@ section {
     gap: 8px;
 }
 
-/* New Local Time Badge */
 .time-badge {
     background: var(--card);
     color: var(--text-muted);
@@ -269,7 +267,6 @@ section {
     margin: 0 0 15px 0;
 }
 
-/* FIXED: Reserves space so the paragraph doesn't stretch/jump while typing */
 .name-wrapper {
     white-space: nowrap;
     display: inline-block;
@@ -718,12 +715,20 @@ section {
         margin-bottom: 30px;
     }
 
+        /* FIX: Force left alignment for all timeline items on mobile */
         .timeline-item.left, .timeline-item.right {
             left: 0;
             text-align: left;
         }
 
-    .left .timeline-content, .left .edu-tag {
+    /* FIX: Override the flex alignment for the left card content */
+    /* This ensures Secondary Education content aligns to the start (left) */
+    .left .timeline-content {
+        align-items: flex-start;
+    }
+
+    /* FIX: Override the tag alignment */
+    .left .edu-tag {
         align-self: flex-start;
     }
 
@@ -740,20 +745,31 @@ section {
     .hero-name {
         font-size: 1.8rem;
     }
-    /* Stack badges vertically on small screens if needed */
+
     .badge-container {
         flex-direction: column;
         align-items: center;
         gap: 8px;
     }
 
+    /* BUTTON SIDE MARGINS */
     .hero-btns {
         flex-direction: column;
         width: 100%;
+        padding: 0 25px;
+        box-sizing: border-box;
     }
 
     .btn-primary, .btn-secondary {
         width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* ABOUT ME TEXT & MARGINS */
+    .about-content p {
+        font-size: 0.85rem;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .timeline::after {
