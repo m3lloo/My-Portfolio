@@ -807,6 +807,7 @@ section[id] {
         font-size: 0.85rem;
         margin-left: 20px;
         margin-right: 20px;
+        text-align: justify; /* Ensure it stays justified on mobile */
     }
 
     .timeline::after {
