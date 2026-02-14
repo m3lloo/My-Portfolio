@@ -43,13 +43,13 @@
         <div class="container hero-container">
             <div class="hero-left reveal-left">
                 <div class="photo-frame">
+                    <!-- Ensure you have a 'resume.png' in static/img/ -->
                     <img src="{{ url_for('static', filename='img/resume.png') }}" alt="John Mello" class="hero-pic">
                 </div>
             </div>
             <div class="hero-right reveal-right">
                 <div class="badge-container">
                     <span class="status-badge"><span class="dot"></span> Available for Work</span>
-                    <!-- NEW: LOCAL TIME BADGE -->
                     <span class="time-badge"><i class="far fa-clock"></i> <span id="local-time">00:00:00</span></span>
                 </div>
 
@@ -61,6 +61,25 @@
                 </h1>
 
                 <p class="hero-subtitle">Computer Science Student • Software Developer</p>
+
+                <!-- NEW: SOCIAL MEDIA ICONS -->
+                <div class="social-icons">
+                    <!-- CORRECT -->
+<a href="https://www.facebook.com/ollem8/" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+</a>
+                    <a href="https://www.instagram.com/mllozxc/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/m3lloo" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/YOUR_USERNAME" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                <!-- END SOCIAL ICONS -->
+
                 <div class="about-content">
                     <h3>About Me</h3>
                     <p>I value environments that offer daily learning and growth. My focus is on building practical, real-world expertise and developing the habits of a capable, effective professional.</p>

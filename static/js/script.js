@@ -92,7 +92,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// 6. LOCAL TIME CLOCK (NEW)
+// 6. LOCAL TIME CLOCK
 function updateLocalTime() {
     const timeElement = document.getElementById('local-time');
     if (timeElement) {
@@ -108,4 +108,4 @@ function updateLocalTime() {
 }
 
 setInterval(updateLocalTime, 1000);
-updateLocalTime(); // Initial call
+updateLocalTime();

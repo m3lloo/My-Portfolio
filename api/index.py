@@ -10,7 +10,5 @@ app = Flask(__name__,
 def index():
     return render_template('index.html')
 
-# Note: You do not need app.run() for Vercel, 
-# but if you run locally:
 if __name__ == '__main__':
     app.run(debug=True)
