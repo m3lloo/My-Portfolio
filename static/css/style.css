@@ -170,6 +170,8 @@ section[id] {
     font-weight: 700;
     text-align: center;
     margin-bottom: 40px;
+    /* Transition added for smooth resizing if window is dragged */
+    transition: font-size 0.3s; 
 }
 
 .card {
@@ -300,7 +302,7 @@ section[id] {
     margin-bottom: 15px;
 }
 
-/* NEW: SOCIAL ICONS STYLING */
+/* SOCIAL ICONS STYLING */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -335,11 +337,13 @@ section[id] {
     margin-bottom: 10px;
 }
 
+/* --- MAIN TEXT: LEFT ALIGN FOR DESKTOP --- */
 .about-content p {
     color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 30px;
     font-size: 0.95rem;
+    text-align: left; /* Default Left for Desktop */
 }
 
 .hero-btns {
@@ -719,12 +723,18 @@ section[id] {
         flex-direction: column;
         text-align: center;
     }
+    
+    /* --- CENTER TEXT ON MOBILE/TABLET --- */
+    .about-content p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .badge-container {
         justify-content: center;
     }
 
-    /* CENTER SOCIAL ICONS ON MOBILE */
     .social-icons {
         justify-content: center;
         margin-bottom: 30px;
@@ -773,15 +783,20 @@ section[id] {
 }
 
 @media (max-width: 480px) {
+    /* --- FIX: REDUCE H2 FONT SIZE ON MOBILE --- */
+    .section-title {
+        font-size: 1.5rem; /* Reduced from 2.2rem */
+        margin-bottom: 25px;
+    }
+
     .hero-name {
         font-size: 1.8rem;
     }
-    
-    /* --- FIX FOR SUBTITLE ON MOBILE --- */
-    /* Forces the text to stay on one line by making it smaller */
+
+    /* FIX FOR SUBTITLE ON MOBILE */
     .hero-subtitle {
-        font-size: 0.75rem; /* Small enough to fit */
-        white-space: nowrap; /* Forces one single line */
+        font-size: 0.75rem; 
+        white-space: nowrap; 
         margin-bottom: 20px;
     }
 
@@ -803,11 +818,11 @@ section[id] {
         margin-bottom: 10px;
     }
 
+    /* Keep center alignment on small screens, add padding */
     .about-content p {
         font-size: 0.85rem;
         margin-left: 20px;
         margin-right: 20px;
-        text-align: justify; /* Ensure it stays justified on mobile */
     }
 
     .timeline::after {

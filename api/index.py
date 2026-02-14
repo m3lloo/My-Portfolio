@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 
-# Initialize Flask with explicit folder paths relative to the 'api' directory
-# We use '../' to go up one level to the root where 'templates' and 'static' are
+# kakayanin
 app = Flask(__name__, 
             template_folder='../templates', 
             static_folder='../static')
