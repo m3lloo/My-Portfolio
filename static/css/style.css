@@ -776,6 +776,14 @@ section[id] {
     .hero-name {
         font-size: 1.8rem;
     }
+    
+    /* --- FIX FOR SUBTITLE ON MOBILE --- */
+    /* Forces the text to stay on one line by making it smaller */
+    .hero-subtitle {
+        font-size: 0.75rem; /* Small enough to fit */
+        white-space: nowrap; /* Forces one single line */
+        margin-bottom: 20px;
+    }
 
     .badge-container {
         flex-direction: column;
